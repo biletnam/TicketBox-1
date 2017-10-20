@@ -1,0 +1,19 @@
+﻿@using TicketBox.Domain.Entities;
+@model IEnumerable<Event>
+
+@{
+    ViewBag.Title = "Мероприятия";
+}
+
+@foreach (var p in @Model)
+{
+    <div>
+        <h3>@p.Id</h3>
+        <h3>@p.Name</h3>
+        <p>@p.Description</p>
+        <p>@p.Location</p>
+        <p>@p.TimeEvent</p>
+        <p>@p.SpecialEvent</p>
+    </div>
+}
+
