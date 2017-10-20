@@ -38,3 +38,8 @@ C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\obj\Debug\TicketBox.WebUI.
 C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\obj\Debug\TicketBox.WebUI.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\obj\Debug\TicketBox.WebUI.dll
 C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\obj\Debug\TicketBox.WebUI.pdb
+C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\bin\EntityFramework.dll
+C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\bin\TicketBox.Domain.dll.config
+C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\bin\EntityFramework.xml
+C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\bin\EntityFramework.SqlServer.xml

@@ -4,3 +4,8 @@ C:\Users\Admin\source\repos\TicketBox\TicketBox.Domain\obj\Debug\TicketBox.Domai
 C:\Users\Admin\source\repos\TicketBox\TicketBox.Domain\obj\Debug\TicketBox.Domain.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\TicketBox\TicketBox.Domain\obj\Debug\TicketBox.Domain.dll
 C:\Users\Admin\source\repos\TicketBox\TicketBox.Domain\obj\Debug\TicketBox.Domain.pdb
+C:\Users\Admin\source\repos\TicketBox\TicketBox.Domain\bin\Debug\TicketBox.Domain.dll.config
+C:\Users\Admin\source\repos\TicketBox\TicketBox.Domain\bin\Debug\EntityFramework.dll
+C:\Users\Admin\source\repos\TicketBox\TicketBox.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\source\repos\TicketBox\TicketBox.Domain\bin\Debug\EntityFramework.xml
+C:\Users\Admin\source\repos\TicketBox\TicketBox.Domain\bin\Debug\EntityFramework.SqlServer.xml

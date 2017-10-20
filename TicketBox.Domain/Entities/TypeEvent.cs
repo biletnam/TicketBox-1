@@ -8,12 +8,10 @@ namespace TicketBox.Domain.Entities
 {
     public class TypeEvent
     {
-        public int Id { get; set; }
+        public int TypeEventId { get; set; }
         public string Name { get; set; }
-        public ICollection<Event> Events { get; set; }
-        public TypeEvent()
-        {
-            Events = new List<Event>();
-        }
+
+        //ссылка на список мероприятий
+        public virtual List<Event> Events { get; set; }
     }
 }
