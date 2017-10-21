@@ -2,6 +2,7 @@
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Web.Mvc;
 using TicketBox.Domain.Abstract;
 using TicketBox.Domain.Concrete;
@@ -32,6 +33,18 @@ namespace TicketBox.WebUI.Infrastructure
         private void AddBindings()
         {            
             kernel.Bind<IEventRepository>().To<EFEventRepository>();
+            kernel.Bind<ITicketRepository>().To<EFTicketRepository>();
+            kernel.Bind<ITypeTicketRepository>().To<EFTypeTicketRepository>();
+            kernel.Bind<ITypeEventRepository>().To<IFTypeEventRepository>();
+
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager
+                    .AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
+                .WithConstructorArgument("settings", emailSettings);
         }
     }
 }

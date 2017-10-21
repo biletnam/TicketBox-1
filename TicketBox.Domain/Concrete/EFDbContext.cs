@@ -39,28 +39,35 @@ namespace TicketBox.Domain.Concrete
             foreach (TypeTicket type in typeTickets)
                 context.TypeTickets.Add(type);
 
+            List<Event> events = new List<Event>
+            {
+                new Event{Name="Концерт", Description="Новый концерт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 0, Type=typeEvents[1]},
+                new Event{Name="Театр", Description="Новый театар", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 0, Type=typeEvents[0]},
+                new Event{Name="Спорт", Description="Новый спорт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 0, Type=typeEvents[2]}
+            };            
+
+            List<Ticket> tickets = new List<Ticket>
+            {
+                new Ticket { Place="2B", Delivery="+", Price = 100M,Type=typeTickets[0], Event=events[0]},
+                new Ticket { Place="1B", Delivery="+", Price = 250M,Type=typeTickets[2], Event=events[0]},
+                new Ticket { Place="2B", Delivery="+", Price = 177M,Type=typeTickets[3], Event=events[1]},
+                new Ticket { Place="1B", Delivery="+", Price = 666M,Type=typeTickets[1], Event=events[1]},
+                new Ticket { Place="0", Delivery="-", Price = 777M,Type=typeTickets[4], Event=events[2]},
+                new Ticket { Place="0", Delivery="+", Price = 50M,Type=typeTickets[5], Event=events[2]}
+            };
+
+            foreach (Ticket t in tickets)
+            {                
+                context.Tickets.Add(t);
+            }
+
+            foreach (Event e in events)
+            {
+                e.Tickets = tickets.FindAll(x => x.Event == e);
+                context.Events.Add(e);
+            }
+
             context.SaveChanges();
-
-            //List<Event> events = new List<Event>
-            //{
-            //    new Event{Name="Концерт 1", Description="lolals", Location="City", SpecialEvent=0, TimeEvent=DateTime.Now, Type=context.TypeEvents.Find(1) },
-            //    new Event{Name="Театр 2", Description="fgfhbgn", Location="City 2", SpecialEvent=1, TimeEvent=DateTime.Now, Type=context.TypeEvents.Find(2)},
-            //    new Event{Name="Другое 1", Description="прпрпр", Location="City 3", SpecialEvent=56, TimeEvent=DateTime.Now, Type=context.TypeEvents.Find(3)}
-            //};
-
-            //foreach (Event e in events)
-            //    context.Events.Add(e);
-
-            //List<Ticket> tickets = new List<Ticket>
-            //{
-            //    new Ticket{Place="2B", Type=context.TypeTickets.Find(1), Delivery="+", Event=context.Events.Find(1)},
-            //    new Ticket{Place="ghghgf", Type=context.TypeTickets.Find(4), Delivery="-", Event=context.Events.Find(2)},
-            //};
-
-            //foreach (Ticket t in tickets)
-            //    context.Tickets.Add(t);
-
-            //context.SaveChanges();
             base.Seed(context);
         }
     }

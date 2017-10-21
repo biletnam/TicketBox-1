@@ -1,20 +1,19 @@
-﻿@using TicketBox.Domain.Entities;
-@model IEnumerable<Event>
+﻿@using TicketBox.WebUI.Models;
+@model EventsListViewModel
 
 @{
     ViewBag.Title = "Мероприятия";
 }
 
-@foreach (var p in @Model)
+@foreach (var p in @Model.Events)
 {
-    <div>
-        <h3>@p.EventId</h3>
-        <h3>@p.Name</h3>
-        <p>@p.Description</p>
-        <p>@p.Location</p>
-        <p>@p.TimeEvent</p>
-        <p>@p.SpecialEvent</p>
-        <p>@p.Type.Name</p>
-    </div>
+    @Html.Partial("EventSummary", p)
 }
+
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+        new { page = x, category = Model.CurrentCategory }))
+</div>
+
 

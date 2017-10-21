@@ -11,6 +11,7 @@ namespace TicketBox.Domain.Entities
         public int TicketId { get; set; }        
         public string Place { get; set; }
         public string Delivery { get; set; }
+        public decimal Price { get; set; }
 
         //ссылка на мероприятие
         public Event Event { get; set; }

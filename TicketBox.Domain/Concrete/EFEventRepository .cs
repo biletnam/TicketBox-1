@@ -10,11 +10,13 @@ namespace TicketBox.Domain.Concrete
 {
     public class EFEventRepository : IEventRepository
     {
-        EFDbContext context = new EFDbContext();
+        EFDbContext eventContext = new EFDbContext();
+
+        ITypeEventRepository typeEventRepository;
 
         public IEnumerable<Event> Events
-        {
-            get { return context.Events; }
+        {           
+            get { return eventContext.Events; }
         }
     }
 }

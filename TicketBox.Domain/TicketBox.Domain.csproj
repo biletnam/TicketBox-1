@@ -47,12 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IEventRepository.cs" />
+    <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="Abstract\ITicketRepository.cs" />
     <Compile Include="Abstract\ITypeEventRepository.cs" />
     <Compile Include="Abstract\ITypeTicketRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFEventRepository .cs" />
+    <Compile Include="Concrete\EFTicketRepository.cs" />
+    <Compile Include="Concrete\EFTypeEventRepository.cs" />
+    <Compile Include="Concrete\EFTypeTicketRepository.cs" />
+    <Compile Include="Concrete\EmailOrderProcessor.cs" />
+    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Event.cs" />
+    <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Entities\Ticket.cs" />
     <Compile Include="Entities\TypeEvent.cs" />
     <Compile Include="Entities\TypeTicket.cs" />

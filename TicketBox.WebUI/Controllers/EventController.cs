@@ -6,44 +6,46 @@ using System.Web.Mvc;
 using TicketBox.Domain.Abstract;
 using TicketBox.Domain.Concrete;
 using TicketBox.Domain.Entities;
+using TicketBox.WebUI.Models;
 
 namespace TicketBox.WebUI.Controllers
 {
     public class EventController : Controller
     {
-        private IEventRepository repository;
+        private IEventRepository eventRepository;
+        private ITypeEventRepository typeEventRepository;
+        public int pageSize = 4;
 
-        public EventController(IEventRepository repo)
+        public EventController(IEventRepository repo, ITypeEventRepository typeEventRepo)
         {
-            repository = repo;
+            eventRepository = repo;
+            typeEventRepository = typeEventRepo;
         }
 
-        public ViewResult List()
+        public ViewResult List(string category, int page = 1)
         {
             EFDbContext context = new EFDbContext();
 
-            List<Event> events = new List<Event>
+            EventsListViewModel model = new EventsListViewModel
             {
-                new Event{Name="Концерт 1", Description="lolals", Location="City", SpecialEvent=0, TimeEvent=DateTime.Now, Type=context.TypeEvents.Find(1) },
-                new Event{Name="Театр 2", Description="fgfhbgn", Location="City 2", SpecialEvent=1, TimeEvent=DateTime.Now, Type=context.TypeEvents.Find(2)},
-                new Event{Name="Другое 1", Description="прпрпр", Location="City 3", SpecialEvent=56, TimeEvent=DateTime.Now, Type=context.TypeEvents.Find(3)}
+                Events = context.Events
+                                    .Where(p => category == null || p.Type.Name == category)
+                                    .OrderBy(game => game.EventId)
+                                    .Skip((page - 1) * pageSize)
+                                    .Take(pageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                    TotalItems = category == null ?
+                        context.Events.Count() :
+                        context.Events.Where(x => x.Type.Name == category).Count()
+                },
+                CurrentCategory = context.TypeEvents.FirstOrDefault(x => x.Name == category)
+
             };
-
-            foreach (Event e in events)
-                context.Events.Add(e);
-
-            List<Ticket> tickets = new List<Ticket>
-            {
-                new Ticket{Place="2B", Type=context.TypeTickets.Find(1), Delivery="+", Event=context.Events.Find(1)},
-                new Ticket{Place="ghghgf", Type=context.TypeTickets.Find(4), Delivery="-", Event=context.Events.Find(2)},
-            };
-
-            foreach (Ticket t in tickets)
-                context.Tickets.Add(t);
-
-            context.SaveChanges();
-
-            return View(repository.Events);
+            return View(model);
+            
         }
     }
 }
