@@ -40,19 +40,19 @@ namespace TicketBox.WebUI.Models
 
             List<Event> events = new List<Event>
             {
-                new Event{Name="Концерт", Description="Новый концерт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 0, Type=typeEvents[1]},
-                new Event{Name="Театр", Description="Новый театар", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 1, Type=typeEvents[0]},
-                new Event{Name="Спорт", Description="Новый спорт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 2, Type=typeEvents[2]}
+                new Event{Name="Концерт", Description="Новый концерт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 0, TypeEvent=typeEvents[1], TypeEventID = typeEvents[1].TypeEventId},
+                new Event{Name="Театр", Description="Новый театар", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 1, TypeEvent=typeEvents[0], TypeEventID = typeEvents[0].TypeEventId},
+                new Event{Name="Спорт", Description="Новый спорт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 2, TypeEvent=typeEvents[2], TypeEventID = typeEvents[2].TypeEventId}
             };            
 
             List<Ticket> tickets = new List<Ticket>
             {
-                new Ticket { Place="2B", Delivery=true, Price = 100M,Type=typeTickets[0], Event=events[0]},
-                new Ticket { Place="1B", Delivery=true, Price = 250M,Type=typeTickets[2], Event=events[0]},
-                new Ticket { Place="2B", Delivery=true, Price = 177M,Type=typeTickets[3], Event=events[1]},
-                new Ticket { Place="1B", Delivery=true, Price = 666M,Type=typeTickets[1], Event=events[1]},
-                new Ticket { Place="0", Delivery=false, Price = 777M,Type=typeTickets[4], Event=events[2]},
-                new Ticket { Place="0", Delivery=true, Price = 50M,Type=typeTickets[5], Event=events[2]}
+                new Ticket { Place="2B", Delivery=true, Price = 100M,TypeTicket=typeTickets[0], Event=events[0], TypeTicketID=typeTickets[0].TypeTicketId, EventID=events[0].EventId},
+                new Ticket { Place="1B", Delivery=true, Price = 250M,TypeTicket=typeTickets[2], Event=events[0], TypeTicketID=typeTickets[1].TypeTicketId, EventID=events[0].EventId},
+                new Ticket { Place="2B", Delivery=true, Price = 177M,TypeTicket=typeTickets[3], Event=events[1], TypeTicketID=typeTickets[0].TypeTicketId, EventID=events[1].EventId},
+                new Ticket { Place="1B", Delivery=true, Price = 666M,TypeTicket=typeTickets[1], Event=events[1], TypeTicketID=typeTickets[1].TypeTicketId, EventID=events[1].EventId},
+                new Ticket { Place="0", Delivery=false, Price = 777M,TypeTicket=typeTickets[4], Event=events[2], TypeTicketID=typeTickets[2].TypeTicketId, EventID=events[2].EventId},
+                new Ticket { Place="0", Delivery=true, Price = 50M,TypeTicket=typeTickets[5], Event=events[2], TypeTicketID=typeTickets[2].TypeTicketId, EventID=events[2].EventId}
             };
 
             foreach (Ticket t in tickets)

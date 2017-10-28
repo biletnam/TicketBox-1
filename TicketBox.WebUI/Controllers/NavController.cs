@@ -11,12 +11,13 @@ namespace TicketBox.WebUI.Controllers
 
         public PartialViewResult Menu(string category = null)
         {
-            ViewBag.SelectedCategory = category;
-
             IEnumerable<string> categories = db.TypeEvents
                 .Select(x => x.Name)
                 .Distinct()
                 .OrderBy(x => x);
+
+            ViewBag.SelectedCategory = category;
+
             return PartialView(categories);
         }
     }

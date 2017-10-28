@@ -146,10 +146,11 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Controllers\TypeEventController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HtmlHelpers\PagingHelper.cs" />
     <Compile Include="Infrastructure\CartModelBinder.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\EFDbContext.cs" />
@@ -187,6 +188,17 @@
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
     <Content Include="Views\Event\Delete.cshtml" />
+    <Content Include="Views\TypeEvent\Index.cshtml" />
+    <Content Include="Views\TypeEvent\Details.cshtml" />
+    <Content Include="Views\TypeEvent\Create.cshtml" />
+    <Content Include="Views\TypeEvent\Edit.cshtml" />
+    <Content Include="Views\TypeEvent\Delete.cshtml" />
+    <Content Include="Views\Home\notFound.cshtml" />
+    <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Ticket\Delete.cshtml" />
+    <Content Include="Views\Ticket\Details.cshtml" />
+    <Content Include="Views\Ticket\Edit.cshtml" />
+    <Content Include="Views\Ticket\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="HtmlHelpers\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

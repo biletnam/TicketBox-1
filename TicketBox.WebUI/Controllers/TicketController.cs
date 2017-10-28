@@ -1,27 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using TicketBox.WebUI.Models;
 
 namespace TicketBox.WebUI.Controllers
 {
-    public class EventController : Controller
+    public class TicketController : Controller
     {
         private EFDbContext db = new EFDbContext();
 
-        // GET: Event
+        // GET: Ticket
         public async Task<ActionResult> Index()
         {
-            var events = db.Events.Include(d => d.TypeEvent);
-            return View(await events.ToListAsync());
+            var tickets = db.Tickets.Include(d => d.TypeTicket);
+            return View(await tickets.ToListAsync());
         }
 
-        // GET: Event/Details/5
+        // GET: Ticket/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -29,85 +31,87 @@ namespace TicketBox.WebUI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Event _event = await db.Events.FindAsync(id);
+            Ticket ticket = await db.Tickets.FindAsync(id);
 
-            if (_event == null)
+            if (ticket == null)
             {
                 return HttpNotFound();
             }
-            return View(_event);
+            return View(ticket);
         }
 
-        // GET: Event/Create
+        // GET: Ticket/Create
         public ActionResult Create()
         {
-            ViewBag.TypeEventId = new SelectList(db.TypeEvents, "TypeEventId", "Name");
+            ViewBag.TypeTicketId = new SelectList(db.TypeTickets, "TypeTicketId", "Name");
+            ViewBag.EventId = new SelectList(db.Events, "EventId", "Name");
             return View();
         }
 
-        // POST: Event/Create
+        // POST: Ticket/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "EventID,Name,Location,TimeEvent,Description,SpecialEvent,TypeEventID")] Event _event)
+        public async Task<ActionResult> Create([Bind(Include = "TicketId, Place, Delivery, Price, TypeTicketID, EventID")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
-                db.Events.Add(_event);
+                db.Tickets.Add(ticket);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TypeEventId = new SelectList(db.TypeEvents, "TypeEventId", "Name", _event.TypeEventID);
-            return View(_event);
+            ViewBag.TypeTicketId = new SelectList(db.TypeTickets, "TypeEventId", "Name", ticket.TypeTicketID);
+            ViewBag.EventId = new SelectList(db.Events, "EventId", "Name");
+            return View(ticket);
         }
 
-        // GET: Event/Edit/5
+        // GET: Ticket/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event _event = await db.Events.FindAsync(id);
-            if (_event == null)
+            Ticket ticket = await db.Tickets.FindAsync(id);
+            if (ticket == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TypeEventId = new SelectList(db.TypeEvents, "TypeEventId", "Name", _event.TypeEventID);
-            return View(_event);
+            ViewBag.TypeTicketId = new SelectList(db.TypeTickets, "TypeTicketId", "Name", ticket.TypeTicketID);
+            return View(ticket);
         }
 
-        // POST: Event/Edit/5
+        // POST: Ticket/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int? id, byte[] rowVersion)
         {
-            string[] fieldsToBind = new string[] { "Name", "Location", "TimeEvent", "Description", "SpecialEvent", "TypeEventID", "RowVersion" };
+            string[] fieldsToBind = new string[] { "Place", "Delivery", "Price", "TypeTicketID", "RowVersion" };
 
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var eventToUpdate = await db.Events.FindAsync(id);
-            if (eventToUpdate == null)
+            var ticketToUpdate = await db.Tickets.FindAsync(id);
+            if (ticketToUpdate == null)
             {
-                Event deletedEvent = new Event();
+                Ticket deletedTicket = new Ticket();
 
-                TryUpdateModel(deletedEvent, fieldsToBind);
+                TryUpdateModel(deletedTicket, fieldsToBind);
 
                 ModelState.AddModelError(string.Empty,
                     "Unable to save changes. The department was deleted by another user.");
 
-                ViewBag.TypeEventId = new SelectList(db.TypeEvents, "TypeEventId", "Name", deletedEvent.TypeEventID);
-                return View(deletedEvent);
+                ViewBag.TypeTicketId = new SelectList(db.TypeTickets, "TypeTicketId", "Name", deletedTicket.TypeTicketID);
+                return View(deletedTicket);
             }
 
-            if (TryUpdateModel(eventToUpdate, fieldsToBind))
+            if (TryUpdateModel(ticketToUpdate, fieldsToBind))
             {
                 try
                 {
-                    db.Entry(eventToUpdate).OriginalValues["RowVersion"] = rowVersion;
+                    db.Entry(ticketToUpdate).OriginalValues["RowVersion"] = rowVersion;
                     await db.SaveChangesAsync();
 
                     return RedirectToAction("Index");
@@ -115,7 +119,7 @@ namespace TicketBox.WebUI.Controllers
                 catch (DbUpdateConcurrencyException ex)
                 {
                     var entry = ex.Entries.Single();
-                    var clientValues = (Event)entry.Entity;
+                    var clientValues = (Ticket)entry.Entity;
                     var databaseEntry = entry.GetDatabaseValues();
                     if (databaseEntry == null)
                     {
@@ -124,33 +128,27 @@ namespace TicketBox.WebUI.Controllers
                     }
                     else
                     {
-                        var databaseValues = (Event)databaseEntry.ToObject();
+                        var databaseValues = (Ticket)databaseEntry.ToObject();
 
-                        if (databaseValues.Name != clientValues.Name)
-                            ModelState.AddModelError("Name", "Current value: "
-                                + databaseValues.Name);
-                        if (databaseValues.Location != clientValues.Location)
-                            ModelState.AddModelError("Location", "Current value: "
-                                + String.Format("{0:c}", databaseValues.Location));
-                        if (databaseValues.TimeEvent != clientValues.TimeEvent)
+                        if (databaseValues.Place != clientValues.Place)
+                            ModelState.AddModelError("Place", "Current value: "
+                                + databaseValues.Place);
+                        if (databaseValues.Delivery != clientValues.Delivery)
+                            ModelState.AddModelError("Delivery", "Current value: "
+                                + String.Format("{0:c}", databaseValues.Delivery));
+                        if (databaseValues.Price != clientValues.Price)
                             ModelState.AddModelError("TimeEvent", "Current value: "
-                                + String.Format("{0:d}", databaseValues.TimeEvent));
-                        if (databaseValues.TypeEventID != clientValues.TypeEventID)
-                            ModelState.AddModelError("TypeEventID", "Current value: "
-                                + db.TypeEvents.Find(databaseValues.TypeEventID).Name);
-                        if (databaseValues.Description != clientValues.Description)
-                            ModelState.AddModelError("Description", "Current value: "
-                                + String.Format("{0:d}", databaseValues.Description));
-                        if (databaseValues.SpecialEvent != clientValues.SpecialEvent)
-                            ModelState.AddModelError("SpecialEvent", "Current value: "
-                                + String.Format("{0:d}", databaseValues.SpecialEvent));
+                                + String.Format("{0:d}", databaseValues.Price));
+                        if (databaseValues.TypeTicketID != clientValues.TypeTicketID)
+                            ModelState.AddModelError("TypeTicketID", "Current value: "
+                                + db.TypeEvents.Find(databaseValues.TypeTicketID).Name);                        
 
                         ModelState.AddModelError(string.Empty, "The record you attempted to edit "
                             + "was modified by another user after you got the original value. The "
                             + "edit operation was canceled and the current values in the database "
                             + "have been displayed. If you still want to edit this record, click "
                             + "the Save button again. Otherwise click the Back to List hyperlink.");
-                        eventToUpdate.RowVersion = databaseValues.RowVersion;
+                        ticketToUpdate.RowVersion = databaseValues.RowVersion;
                     }
                 }
                 catch (RetryLimitExceededException /* dex */)
@@ -159,19 +157,19 @@ namespace TicketBox.WebUI.Controllers
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
                 }
             }
-            ViewBag.TypeEventId = new SelectList(db.TypeEvents, "TypeEventId", "Name", eventToUpdate.TypeEventID);
-            return View(eventToUpdate);
+            ViewBag.TypeTicketId = new SelectList(db.TypeTickets, "TypeTicketId", "Name", ticketToUpdate.TypeTicketID);
+            return View(ticketToUpdate);
         }
 
-        // GET: Event/Delete/5
+        // GET: Ticket/Delete/5
         public async Task<ActionResult> Delete(int? id, bool? concurrencyError)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event _event = await db.Events.FindAsync(id);
-            if (_event == null)
+            Ticket ticket = await db.Tickets.FindAsync(id);
+            if (ticket == null)
             {
                 if (concurrencyError.GetValueOrDefault())
                 {
@@ -190,29 +188,29 @@ namespace TicketBox.WebUI.Controllers
                     + "click the Back to List hyperlink.";
             }
 
-            return View(_event);
+            return View(ticket);
         }
 
-        // POST: Department/Delete/5
+        // POST: Ticket/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(Event _event)
+        public async Task<ActionResult> Delete(Ticket ticket)
         {
             try
             {
-                db.Entry(_event).State = EntityState.Deleted;
+                db.Entry(ticket).State = EntityState.Deleted;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             catch (DbUpdateConcurrencyException)
             {
-                return RedirectToAction("Delete", new { concurrencyError = true, id = _event.EventId });
+                return RedirectToAction("Delete", new { concurrencyError = true, id = ticket.TicketId });
             }
             catch (DataException /* dex */)
             {
                 //Log the error (uncomment dex variable name after DataException and add a line here to write a log.
                 ModelState.AddModelError(string.Empty, "Unable to delete. Try again, and if the problem persists contact your system administrator.");
-                return View(_event);
+                return View(ticket);
             }
         }
 

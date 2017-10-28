@@ -25,7 +25,7 @@
             @Html.DisplayNameFor(model => model.TimeEvent)
         </th>
         <th>
-            Type
+            Type Event
         </th>
         <th></th>
     </tr>
@@ -42,13 +42,13 @@
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.SpecialEvent)
+                @Html.DisplayFor(modelItem => item.SpecialEvent)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.TimeEvent)
+                @Html.DisplayFor(modelItem => item.TimeEvent)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type.Name)
+                @Html.DisplayFor(modelItem => item.TypeEvent.Name)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |

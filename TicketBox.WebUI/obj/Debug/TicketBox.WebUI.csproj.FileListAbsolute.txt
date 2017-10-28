@@ -77,4 +77,3 @@ C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\bin\ru\System.Web.WebPages
 C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\obj\Debug\TicketBox.WebUI.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\obj\Debug\TicketBox.WebUI.dll
 C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\obj\Debug\TicketBox.WebUI.pdb
-C:\Users\Admin\source\repos\TicketBox\TicketBox.WebUI\obj\Debug\TicketBox.WebUI.csprojResolveAssemblyReference.cache

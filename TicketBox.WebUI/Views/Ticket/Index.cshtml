@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TicketBox.WebUI.Models.Ticket>
+
+@{
+    ViewBag.Title = "Tikcet";
+}
+<h2>Events</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delivery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>        
+        <th>
+            Type Ticket
+        </th>
+        <th>
+            Event
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivery)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeTicket.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TicketId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TicketId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TicketId })
+            </td>
+        </tr>
+    }
+</table>

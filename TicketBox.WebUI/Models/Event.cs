@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TicketBox.WebUI.Models
 {
@@ -9,6 +8,7 @@ namespace TicketBox.WebUI.Models
     {
         public int EventId { get; set; }
 
+        [Display(Name = "Name")]
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
 
@@ -25,14 +25,14 @@ namespace TicketBox.WebUI.Models
 
         [Display(Name = "Special Event")]
         public byte SpecialEvent { get; set; }
-
-        public int? TypeID { get; set; }
+                
+        public int TypeEventID { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
         //ссылка на тип мероприятия
-        public virtual TypeEvent Type { get; set; }
+        public virtual TypeEvent TypeEvent { get; set; }
         //ссылка на список билетов
         public virtual List<Ticket> Tickets { get; set; }
     }
