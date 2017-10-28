@@ -1,0 +1,18 @@
+﻿@model TicketBox.WebUI.ViewModel.EventsListViewModel
+
+@{
+    ViewBag.Title = "Мероприятия";
+}
+
+@foreach (var p in Model.Events)
+{
+    @Html.Partial("EventSummary", p);
+}
+
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+        new { page = x, category = Model.CurrentCategory }))
+</div>
+
+

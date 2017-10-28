@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using TicketBox.Domain.Abstract;
+using TicketBox.WebUI.Models;
 
 namespace TicketBox.WebUI.Controllers
 {
     public class NavController : Controller
     {
-        private ITypeEventRepository typeEventRepository;
-
-        public NavController(ITypeEventRepository repo)
-        {
-            typeEventRepository = repo;
-        }
+        private EFDbContext db = new EFDbContext();
 
         public PartialViewResult Menu(string category = null)
         {
             ViewBag.SelectedCategory = category;
 
-            IEnumerable<string> categories = typeEventRepository.TypeEvents
+            IEnumerable<string> categories = db.TypeEvents
                 .Select(x => x.Name)
                 .Distinct()
                 .OrderBy(x => x);

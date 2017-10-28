@@ -1,4 +1,4 @@
-﻿@model TicketBox.Domain.Entities.Cart
+﻿@model TicketBox.WebUI.Models.Cart
 
 <div class="navbar-right">
     @Html.ActionLink("Заказать", "Index", "Cart",
@@ -6,8 +6,11 @@
     new { @class = "btn btn-default navbar-btn" })
 </div>
 
-<div class="navbar-text navbar-right">
-    <b>Ваша корзина:</b>
-    @Model.Lines.Sum(x => x.Quantity) игр,
-    @Model.ComputeTotalValue().ToString("# руб")
-</div>
+@*<div class="navbar-text navbar-right">*@
+    <li><a href="/Cart/Index?returnUrl=/" rel="nofollow">Корзина<span class="badge" id="total-cart-count"></span></a></li>
+    <li><span class="badge" id="total-cart-count">@Model.Lines.Sum(x => x.Quantity) билетов</span></li>
+    <li><span class="badge" id="total-cart-count">@Model.ComputeTotalValue().ToString("# руб")</span></li>
+@*</div>*@
+
+
+

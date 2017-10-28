@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
-using TicketBox.WebUI.Models;
+using TicketBox.WebUI.ViewModel;
 
 namespace TicketBox.WebUI.HtmlHelpers
 {

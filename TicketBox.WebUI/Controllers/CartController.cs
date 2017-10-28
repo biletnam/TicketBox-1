@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Configuration;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using TicketBox.Domain.Abstract;
-using TicketBox.Domain.Entities;
 using TicketBox.WebUI.Models;
+using TicketBox.WebUI.ViewModel;
 
 namespace TicketBox.WebUI.Controllers
 {
     public class CartController : Controller
     {
-        private IEventRepository repository;
-        private IOrderProcessor orderProcessor;
+        private EFDbContext db = new EFDbContext();
 
-        public CartController(IEventRepository repo, IOrderProcessor processor)
-        {
-            repository = repo;
-            orderProcessor = processor;
-        }
+        private static EmailSettings emailSettings = new EmailSettings
+                                {
+                                    WriteAsFile = bool.Parse(ConfigurationManager
+                                            .AppSettings["Email.WriteAsFile"] ?? "false")
+                                };
+        private EmailOrderProcessor orderProcessor = new EmailOrderProcessor(emailSettings);
 
         public ViewResult Index(Cart cart, string returnUrl)
         {
@@ -31,7 +28,7 @@ namespace TicketBox.WebUI.Controllers
 
         public RedirectToRouteResult AddToCart(Cart cart, int eventId, string returnUrl)
         {
-            Event _event = repository.Events
+            Event _event = db.Events
                 .FirstOrDefault(g => g.EventId == eventId);
 
             if (_event != null)
@@ -43,7 +40,7 @@ namespace TicketBox.WebUI.Controllers
 
         public RedirectToRouteResult RemoveFromCart(Cart cart, int eventId, string returnUrl)
         {
-            Event _event = repository.Events
+            Event _event = db.Events
                 .FirstOrDefault(g => g.EventId == eventId);
 
             if (_event != null)
