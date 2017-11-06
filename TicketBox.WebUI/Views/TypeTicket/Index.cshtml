@@ -1,8 +1,8 @@
-﻿@model IEnumerable<TicketBox.WebUI.Models.TypeEvent>
+﻿@model IEnumerable<TicketBox.WebUI.Models.TypeTicket>
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    ViewBag.Title = "Type Events";
+    ViewBag.Title = "Type Ticket";
 }
 <h2>Events</h2>
 <p>
@@ -11,8 +11,8 @@
 <table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TypeEventId)
-        </th> 
+            @Html.DisplayNameFor(model => model.TypeTicketId)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>               
@@ -22,16 +22,16 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TypeEventId)
+                @Html.DisplayFor(modelItem => item.TypeTicketId)
             </td> 
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>                       
             <td>
                 <div class="btn-group-vertical">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.TypeEventId }, new { @class = "btn btn-default" })
-                    @Html.ActionLink("Details", "Details", new { id = item.TypeEventId }, new { @class = "btn btn-default" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.TypeEventId }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TypeTicketId }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "Details", new { id = item.TypeTicketId }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TypeTicketId }, new { @class = "btn btn-default" })
                 </div>
             </td>
         </tr>

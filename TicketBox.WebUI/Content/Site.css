@@ -1,5 +1,14 @@
-﻿body {
+﻿@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
     padding-bottom: 20px;
+    /* Margin bottom by footer height */
+    margin-bottom: 80px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -19,3 +28,21 @@ textarea {
     margin-right: 0;
 }
 
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 80px;
+    font-weight:bold;
+}
+
+
+.bg-lightgray {
+    background-color: LightGray;
+}
+
+.col-lg-12
+{
+    padding-right:0;
+}

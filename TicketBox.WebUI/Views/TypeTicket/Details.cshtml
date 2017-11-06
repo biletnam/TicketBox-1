@@ -1,4 +1,4 @@
-﻿@model TicketBox.WebUI.Models.TypeEvent
+﻿@model TicketBox.WebUI.Models.TypeTicket
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,16 +8,16 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Type Event</h4>
+    <h4>Type Ticket</h4>
     <hr />
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.TypeEventId)
+            @Html.DisplayNameFor(model => model.TypeTicketId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TypeEventId)
+            @Html.DisplayFor(model => model.TypeTicketId)
         </dd>
 
         <dt>

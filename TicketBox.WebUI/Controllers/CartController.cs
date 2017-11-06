@@ -10,13 +10,6 @@ namespace TicketBox.WebUI.Controllers
     {
         private EFDbContext db = new EFDbContext();
 
-        private static EmailSettings emailSettings = new EmailSettings
-                                {
-                                    WriteAsFile = bool.Parse(ConfigurationManager
-                                            .AppSettings["Email.WriteAsFile"] ?? "false")
-                                };
-        private EmailOrderProcessor orderProcessor = new EmailOrderProcessor(emailSettings);
-
         public ViewResult Index(Cart cart, string returnUrl)
         {
             return View(new CartIndexViewModel
@@ -65,7 +58,6 @@ namespace TicketBox.WebUI.Controllers
 
             if (ModelState.IsValid)
             {
-                orderProcessor.ProcessOrder(cart, shippingDetails);
                 cart.Clear();
                 return View("Completed");
             }

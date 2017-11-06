@@ -20,6 +20,7 @@ namespace TicketBox.WebUI.Models
         [Display(Name = "Time Event")]
         public DateTime TimeEvent { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Description")]
         public string Description { get; set; }
 

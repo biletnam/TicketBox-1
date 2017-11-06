@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<TicketBox.WebUI.Models.Ticket>
 
 @{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Tikcet";
 }
 <h2>Events</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "", new { @class = "btn btn-default" })
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Place)
@@ -45,9 +46,11 @@
                 @Html.DisplayFor(modelItem => item.Event.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TicketId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TicketId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TicketId })
+                <div class="btn-group-vertical">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TicketId }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "Details", new { id = item.TicketId }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TicketId }, new { @class = "btn btn-default" })
+                </div>
             </td>
         </tr>
     }

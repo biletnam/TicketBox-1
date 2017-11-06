@@ -28,23 +28,20 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Домой</a></li>
-                    <li><a href="/Театр">Театр</a></li>
-                    <li><a href="/Концерт">Концерт</a></li>
-                    <li><a href="/Спорт">Спорт</a></li>
-                    <li><a href="/Детям">Детям</a></li>
-                    <li><a href="/Другое">Другое</a></li>
-                    @Html.Action("Summary", "Cart")
+                    <li><a href="/Event/Index">Event</a></li>
+                    <li><a href="/Ticket/Index">Ticket</a></li>
+                    <li><a href="/TypeEvent/Index">TypeEvent</a></li>
+                    <li><a href="/TypeTicket/Index">TypeTicket</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
 
-
     <div class="row panel">
         <div class="col-xs-8 col-lg-12">
-            @RenderBody() 
+            @RenderBody()
         </div>
-    </div>    
+    </div>
 
     <footer class="container-fluid text-center bg-lightgray footer">
         <div class="copyrights" style="margin-top:25px;">
@@ -52,7 +49,7 @@
                 &copy; @DateTime.Now.Year - TicketBox, All Rights Reserved
                 <br>
                 <span>Web Design By: Klysow Nikita</span>
-            </p>            
+            </p>
         </div>
     </footer>
 

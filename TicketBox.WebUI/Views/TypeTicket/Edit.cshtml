@@ -1,4 +1,4 @@
-﻿@model TicketBox.WebUI.Models.TypeEvent
+﻿@model TicketBox.WebUI.Models.TypeTicket
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -13,15 +13,15 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Type Event</h4>
+        <h4>Type Ticket</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.TypeEventId)
+        @Html.HiddenFor(model => model.TypeTicketId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TypeEventId, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TypeTicketId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DisplayFor(model => model.TypeEventId)
+                @Html.DisplayFor(model => model.TypeTicketId)
             </div>
         </div>
 

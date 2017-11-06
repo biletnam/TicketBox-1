@@ -15,27 +15,13 @@ namespace TicketBox.WebUI
                 {
                     controller = "Home",
                     action = "List",
-                    category = (string)null,
-                    page = 1
+                    category = (string)null
                 }
-            );
-
-            routes.MapRoute(
-                name: null,
-                url: "Page{page}",
-                defaults: new { controller = "Home", action = "List", category = (string)null },
-                constraints: new { page = @"\d+" }
             );
 
             routes.MapRoute(null,
                 "{category}",
-                new { controller = "Home", action = "List", page = 1 }
-            );
-
-            routes.MapRoute(null,
-                "{category}/Page{page}",
-                new { controller = "Home", action = "List" },
-                new { page = @"\d+" }
+                new { controller = "Home", action = "List" }
             );
 
             routes.MapRoute(null, "{controller}/{action}");

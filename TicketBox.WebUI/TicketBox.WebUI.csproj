@@ -145,16 +145,15 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\TypeEventController.cs" />
+    <Compile Include="Controllers\TypeTicketController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\CartModelBinder.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\EFDbContext.cs" />
-    <Compile Include="Models\EmailOrderProcessor.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\ShippingDetails.cs" />
     <Compile Include="Models\Ticket.cs" />
@@ -178,7 +177,6 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\Shared\EventSummary.cshtml" />
-    <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Summary.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
@@ -199,6 +197,12 @@
     <Content Include="Views\Ticket\Details.cshtml" />
     <Content Include="Views\Ticket\Edit.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\TypeTicket\Create.cshtml" />
+    <Content Include="Views\TypeTicket\Delete.cshtml" />
+    <Content Include="Views\TypeTicket\Details.cshtml" />
+    <Content Include="Views\TypeTicket\Edit.cshtml" />
+    <Content Include="Views\TypeTicket\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
