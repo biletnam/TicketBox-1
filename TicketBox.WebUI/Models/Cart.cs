@@ -36,7 +36,6 @@ namespace TicketBox.WebUI.Models
         public decimal ComputeTotalValue()
         {
             return lineCollection.Sum(e => e.Tickets.Sum(x => x.Price) * e.Quantity);
-
         }
         public void Clear()
         {

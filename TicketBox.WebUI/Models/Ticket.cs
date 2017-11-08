@@ -26,6 +26,5 @@ namespace TicketBox.WebUI.Models
         public virtual Event Event { get; set; }
         //ссылка на тип билета
         public virtual TypeTicket TypeTicket { get; set; }
-        
     }
 }

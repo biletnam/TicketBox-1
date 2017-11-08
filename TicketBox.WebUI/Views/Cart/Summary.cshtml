@@ -7,9 +7,13 @@
 </div>
 
 @*<div class="navbar-text navbar-right">*@
-    <li><a href="/Cart/Index?returnUrl=/" rel="nofollow">Корзина<span class="badge" id="total-cart-count"></span></a></li>
-    <li><span class="badge" id="total-cart-count">@Model.Lines.Sum(x => x.Quantity) билетов</span></li>
-    <li><span class="badge" id="total-cart-count">@Model.ComputeTotalValue().ToString("# руб")</span></li>
+    <li ><a href="/Cart/Index?returnUrl=/" rel="nofollow">Корзина<span class="badge" id="total-cart-count"></span></a></li>
+    <li class="cart"><span class="badge" id="total-cart-count">@Model.Lines.Sum(x => x.Quantity) билетов</span></li>
+    @if (Model.ComputeTotalValue() != 0)
+    {
+        <li class="cart"><span class="badge" id="total-cart-count">@Model.ComputeTotalValue().ToString("# руб")</span></li>
+    }
+
 @*</div>*@
 
 
