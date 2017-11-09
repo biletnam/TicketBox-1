@@ -9,15 +9,21 @@ namespace TicketBox.WebUI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(null,
-                "",
-                new
-                {
-                    controller = "Home",
-                    action = "List",
-                    category = (string)null
-                }
+            routes.MapRoute(
+                name: "Admin",
+                url: "Admin",
+                defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(null,
+            //    "",
+            //    new
+            //    {
+            //        controller = "Home",
+            //        action = "List",
+            //        category = (string)null
+            //    }
+            //);
 
             routes.MapRoute(null,
                 "{category}",
