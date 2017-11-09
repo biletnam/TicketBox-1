@@ -26,7 +26,10 @@ namespace TicketBox.WebUI.Models
 
         [Display(Name = "Special Event")]
         public byte SpecialEvent { get; set; }
-                
+
+        [MaxLength(80)]
+        public string PathToImage { get; set; }
+
         public int TypeEventID { get; set; }
 
         [Timestamp]

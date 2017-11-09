@@ -5,6 +5,7 @@
         <strong>@Model.Name</strong>
     </h3>
     <span class="lead">@Model.Description</span>
+    <img class="img-thumbnail img-responsive" src="~/Content/img/@Model.PathToImage" />
     <p>@Model.Location</p>
     @using (Html.BeginForm("AddToCart", "Cart"))
     {

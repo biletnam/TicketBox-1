@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Web.Hosting;
 
 namespace TicketBox.WebUI.Models
 {
@@ -40,9 +41,9 @@ namespace TicketBox.WebUI.Models
 
             List<Event> events = new List<Event>
             {
-                new Event{Name="Концерт", Description="Новый концерт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 0, TypeEvent=typeEvents[1], TypeEventID = typeEvents[1].TypeEventId},
-                new Event{Name="Театр", Description="Новый театар", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 1, TypeEvent=typeEvents[0], TypeEventID = typeEvents[0].TypeEventId},
-                new Event{Name="Спорт", Description="Новый спорт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 2, TypeEvent=typeEvents[2], TypeEventID = typeEvents[2].TypeEventId}
+                new Event{Name="Концерт", Description="Новый концерт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 0, TypeEvent=typeEvents[1], TypeEventID = typeEvents[1].TypeEventId, PathToImage= "concert/concert.jpg" },
+                new Event{Name="Театр", Description="Новый театар", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 1, TypeEvent=typeEvents[0], TypeEventID = typeEvents[0].TypeEventId, PathToImage= "theater/theater.jpg" },
+                new Event{Name="Спорт", Description="Новый спорт", Location="Санкт-Петербург", TimeEvent=DateTime.Now, SpecialEvent = 2, TypeEvent=typeEvents[2], TypeEventID = typeEvents[2].TypeEventId, PathToImage= "sport/sport.png" }
             };            
 
             List<Ticket> tickets = new List<Ticket>
