@@ -4,13 +4,44 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+    
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
+
+    <div class="header_bg">
+        <div class="wrap">
+            <div class="header">
+                <div class="logo">
+                    <a href="/"><img src="~/Content/img/logo.png" alt="" /> </a>
+                </div>
+                <div class="h_icon">
+                    <ul class="icon1 sub-icon1">
+                        <li>
+                            <a class="active-icon c1" href="#"><i>$300</i></a>
+                            <ul class="sub-icon1 list">
+                                <li><h3>shopping cart empty</h3><a href=""></a></li>
+                                <li><p>if items in your wishlit are missing, <a href="contact.html">contact us</a> to view them</p></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="h_search">
+                    <form>
+                        <input type="text" value="">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <!—Название сайта и кнопка раскрытия меню для мобильных-->
@@ -38,7 +69,6 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-
 
     <div class="row panel">
         <div class="col-xs-8 col-lg-12">
