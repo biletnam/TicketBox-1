@@ -4,9 +4,24 @@
     ViewBag.Title = "Мероприятия";
 }
 
-@foreach (var p in Model.Events)
-{
-    @Html.Partial("EventSummary", p);
-}
+
+<!-- start main -->
+<div class="main_bg">
+    <div class="wrap">
+        <div class="main">
+            <!-- start grids_of_3 -->
+            
+                <div class="grids_of_3">
+                    @foreach (var p in Model.Events)
+                    {
+                        @Html.Partial("EventSummary", p);
+                    }   
+                    <div class="clear"></div>
+                </div>
+            
+            <!-- end grids_of_3 -->
+        </div>
+    </div>
+</div>
 
 

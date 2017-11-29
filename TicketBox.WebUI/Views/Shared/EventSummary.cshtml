@@ -1,11 +1,11 @@
 ﻿@model TicketBox.WebUI.Models.Event
 
-<div class="well">
+@*<div class="well">
     <h3>
         <strong>@Model.Name</strong>
     </h3>
     <span class="lead">@Model.Description</span>
-    <img class="img-thumbnail img-responsive" src="~/Content/img/@Model.PathToImage" />
+    <img class="img-thumbnail img-responsive" src="~/Content/images/@Model.PathToImage" />
     <p>@Model.Location</p>
     @using (Html.BeginForm("AddToCart", "Cart"))
     {
@@ -16,4 +16,17 @@
         </div>
     }
     <p>@Model.TimeEvent</p>    
+</div>*@
+
+
+<div class="grid1_of_3">    
+    <a href="/Home/Details/@Model.EventId">
+        <img src="~/Content/images/@Model.PathToImage" alt="" />
+        <h3>@Model.Name</h3>
+        <div class="price">
+            <h4><span>Детали</span></h4>
+        </div>
+        <span class="b_btm"></span>
+    </a>   
 </div>
+            

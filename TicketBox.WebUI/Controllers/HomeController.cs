@@ -25,5 +25,15 @@ namespace TicketBox.WebUI.Controllers
             }
             return View(model);
         }
+
+        public ViewResult Details(int id)
+        {
+            Event _event = context.Events.FirstOrDefault(x => x.EventId == id);
+            if(_event == null)
+            {
+                return View("notFound");
+            }
+            return View(_event);
+        }
     }
 }

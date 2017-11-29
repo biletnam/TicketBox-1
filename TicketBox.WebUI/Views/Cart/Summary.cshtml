@@ -6,15 +6,24 @@
     new { @class = "btn btn-default navbar-btn" })
 </div>
 
-@*<div class="navbar-text navbar-right">*@
-    <li ><a href="/Cart/Index?returnUrl=/" rel="nofollow">Корзина<span class="badge" id="total-cart-count"></span></a></li>
-    <li class="cart"><span class="badge" id="total-cart-count">@Model.Lines.Sum(x => x.Quantity) билетов</span></li>
-    @if (Model.ComputeTotalValue() != 0)
-    {
-        <li class="cart"><span class="badge" id="total-cart-count">@Model.ComputeTotalValue().ToString("# руб")</span></li>
-    }
 
-@*</div>*@
+<li>
+    <a href="/Cart/Index?returnUrl=/" rel="nofollow">Корзина<span class="badge" id="total-cart-count"></span></a></li>
+<li class="cart"><span class="badge" id="total-cart-count">@Model.Lines.Sum(x => x.Quantity) билетов</span></li>
+@if (Model.ComputeTotalValue() != 0)
+{
+    <li class="cart"><span class="badge" id="total-cart-count">@Model.ComputeTotalValue().ToString("# руб")</span></li>
+}
+
+@*<ul class="icon1 sub-icon1">
+    <li>
+        <a class="active-icon c1" href="#"><i>$300</i></a>
+        <ul class="sub-icon1 list">
+            <li><h3>shopping cart empty</h3><a href=""></a></li>
+            <li><p>if items in your wishlit are missing, <a href="contact.html">contact us</a> to view them</p></li>
+        </ul>
+    </li>
+</ul>*@
 
 
 

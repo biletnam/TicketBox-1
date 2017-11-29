@@ -29,7 +29,22 @@ namespace TicketBox.WebUI.App_Start
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/ErrorStyles.css"));
+                      "~/Content/ErrorStyles.css"
+                      ));
+
+            bundles.Add(new StyleBundle("~/Content/style").Include(
+                      "~/Content/style.css",
+                      "~/Content/slider.css",
+                      "~/Content/owl.carousel.css"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/js").Include(
+                "~/Scripts/jquery.cslider.js",
+                "~/Scripts/owl.carousel.js",
+                "~/Scripts/move-top.js",
+                "~/Scripts/easing.js",
+                "~/Scripts/responsive.menu.js"
+                ));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
