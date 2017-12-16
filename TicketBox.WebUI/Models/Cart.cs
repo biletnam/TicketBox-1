@@ -18,7 +18,7 @@ namespace TicketBox.WebUI.Models
                 lineCollection.Add(new CartLine
                 {
                     Event = _event,
-                    Tickets = _event.Tickets.FindAll(x => x.Event == _event),
+                    //Tickets = _event.Tickets.FindAll(x => x.Event == _event),
                     Quantity = quantity
                 });
             }
